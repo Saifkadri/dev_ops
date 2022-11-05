@@ -17,8 +17,14 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
+
 public class SecteurActivite implements Serializable{
+	public SecteurActivite(long l, String string, String string2, Object object) {
+		// TODO Auto-generated constructor stub
+	}
+	public SecteurActivite() {
+		// TODO Auto-generated constructor stub
+	}
 	/**
 	 * 
 	 */
@@ -31,4 +37,12 @@ public class SecteurActivite implements Serializable{
 	@ManyToMany(mappedBy="secteurActivites")
 	@JsonIgnore
 	private Set<Fournisseur> fournisseurs;
+	public void setCodeSecteurActivite(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+	public Object getCodeSecteurActivite() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
