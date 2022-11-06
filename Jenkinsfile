@@ -13,7 +13,15 @@ pipeline {
                  steps{
                     sh "mvn -B -DskipTests clean  "
                     }
+	         
                  
 }
+		  stage('SonarQube analysis') {
+		        steps {
+		        withSonarQubeEnv(installationName: 'Sonar') {
+		        sh 'mvn clean clean -DskipTests package sonar:sonar'
+	                  }
+	                }
+	            }
 }
 }
