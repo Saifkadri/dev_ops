@@ -1,8 +1,5 @@
 pipeline {
       agent any
-	  tools {
-		maven 'M2_HOME'
-		        }
           stages {
 
 	        stage('Checkout GIT ') {
@@ -25,12 +22,13 @@ pipeline {
       		          }
             	}
 		  
-		   stage('Testing maven') {
+		   /* stage('Testing maven') {
 		        steps {
 		        sh """mvn -version
 		              mvn clean package """
 	                   }
 	            }
+		    */
 
 		  stage('SonarQube analysis') {
 		        steps {
