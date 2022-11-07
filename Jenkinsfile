@@ -22,6 +22,13 @@ pipeline {
       		          }
             	}
 		  
+		  stage("NEXUS") {
+        	    steps {
+		        sh 'mvn clean deploy -DskipTests'
+                      }
+                }
+
+		  
 		   /* stage('Testing maven') {
 		        steps {
 		        sh """mvn -version
