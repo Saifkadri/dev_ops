@@ -22,8 +22,8 @@ services:
      - /home/mysql/data:/var/lib/mysql --user 1000
 
   spring_app:
-   image: 94800320/produit/jenkinsspring:latest
-   container_name: jenkinsspring
+   image: 94800320/produit:latest
+   container_name: produit
    ports:
     - 8089:8089
    environment:
