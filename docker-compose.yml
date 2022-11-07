@@ -35,9 +35,4 @@ services:
    restart: on-failure
    links:
       - mysqldb1
-  angular-app: 
-   image: "94800320/produit/angular:latest"
-   links: 
-     -  spring_app
-   ports: 
-     - "4200:4200"
+
