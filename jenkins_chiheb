@@ -31,29 +31,12 @@ pipeline{
             }
        stage("SonarQube Analysis") {
                        steps {
-                         withSonarQubeEnv('sonarmed') {
+                         withSonarQubeEnv('sonar') {
                            sh 'mvn clean -DskipTests package sonar:sonar'
                          }
                        }
                      }
-                           stage("upload war to nexus") {
-                                           steps {
-                                           nexusArtifactUploader artifacts:
-                                            [[
-                                            artifactId: 'spring-boot-starter-parent',
-                                            classifier: '',
-                                            file: 'target/achat-2.5.3.war',
-                                            type: 'war'
-                                            ]],
-                                            credentialsId: 'nexus',
-                                             groupId: 'org.springframework.boot',
-                                              nexusUrl: '192.168.56.3:8081',
-                                              nexusVersion: 'nexus2',
-                                              protocol: 'http',
-                                              repository: 'http://192.168.56.3:8081/repository/simpleapp-release/',
-                                               version: '2.5.3'
-                                           }
-                                           }
+                         
 
 
 
