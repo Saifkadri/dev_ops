@@ -33,9 +33,10 @@ pipeline{
             }
             stage("SonarQube Analysis") {
                        steps {
+		       script{
                          withSonarQubeEnv('sonar') {
                            sh 'mvn clean -DskipTests package sonar:sonar'
-                         }
+                         }}
                        }
                      }
             stage('Upload War To Nexus'){
