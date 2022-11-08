@@ -8,7 +8,7 @@ pipeline{
   }
   environment {
 
-        DOCKERHUB_CREDENTIALS = credentials('chihebnj')}
+        DOCKERHUB_CREDENTIALS = credentials('dckr_pat_pMO4oF0bbcjL0rSRtoa2AVHQKcU')}
      
         
         stages{
