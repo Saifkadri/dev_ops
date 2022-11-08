@@ -4,7 +4,6 @@ pipeline{
         tools {
      jdk 'JAVA_HOME'
      maven 'M2_HOME'
-     
   }
      
         
@@ -26,19 +25,20 @@ pipeline{
                 steps {
                 sh '''mvn -version
                 mvn -B -DskipTests clean package'''
-              git fetch --all  //sh 'mvn test'
+                //sh 'mvn test'
                 echo """Bravo! tous les tests sont pris en charge"""
                 }
             }
-            stage("SonarQube Analysis") {
+       stage("SonarQube Analysis") {
                        steps {
                          withSonarQubeEnv('sonar') {
                            sh 'mvn clean -DskipTests package sonar:sonar'
                          }
                        }
                      }
-            
+                           
+
+
+
         }
 }
-
-
