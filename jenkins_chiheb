@@ -4,6 +4,7 @@ pipeline{
         tools {
      jdk 'JAVA_HOME'
      maven 'M2_HOME'
+     maven 'maven3'
   }
      
         
@@ -25,21 +26,35 @@ pipeline{
                 steps {
                 sh '''mvn -version
                 mvn -B -DskipTests clean package'''
-                //sh 'mvn test'
+              git fetch --all  //sh 'mvn test'
                 echo """Bravo! tous les tests sont pris en charge"""
                 }
             }
-       stage("SonarQube Analysis") {
+            stage("SonarQube Analysis") {
                        steps {
                          withSonarQubeEnv('sonar') {
                            sh 'mvn clean -DskipTests package sonar:sonar'
                          }
                        }
                      }
-                         
-
-
-
+            stage('Upload War To Nexus'){
+                steps{
+                    nexusArtifactUploader artifacts: [
+                            [
+                            artifactId: 'achat',
+                            classifier: '', file: 'target/achat-1.0.war',
+                            type: 'war'
+                            ]
+                    ],
+                     credentialsId: 'nexus3',
+                        groupId: 'tn.esprit.rh',
+                        nexusUrl: '192.168.33.10:8081',
+                        nexusVersion: 'nexus3',
+                        protocol: 'http',
+                        repository: 'simpleapp-release',
+                        version: '1.0'
+                }
+            }
         }
 }
 
