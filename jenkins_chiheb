@@ -22,20 +22,22 @@ pipeline{
                                           sh 'echo "login Docker ...."'
                    	sh 'docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'
                                }  }}
-		 stage('Docker push') {
-
-                 steps {
-		 script{
-                      sh 'echo "Docker is pushing ...."'
-                     	sh 'docker push $DOCKERHUB_CREDENTIALS_USR/springprojet'
-                        }  }}
-         stage('Docker compose') {
-
-                          steps {
-			  script{
-                               sh 'docker-compose up -d'
-                                 }  }}
+		
         }
+	post {
+                success {
+                     mail to: "chiheb.najei@esprit.tn",
+                            subject: "Build sucess",
+                            body: "sucess"
+                    echo 'successful'
+                }
+                failure {
+                     mail to: "chiheb.najei@esprit.tn",
+                            subject: "Build failed",
+                            body: "failed"
+                    echo 'failed'
+                }
+              }
 }
 
 
