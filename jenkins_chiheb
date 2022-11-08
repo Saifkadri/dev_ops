@@ -45,7 +45,7 @@ pipeline{
                             [
                             artifactId: 'achat',
                             classifier: '', 
-			    file: 'target/achat.war',
+			    file: 'achat-1.0.war',
                             type: 'war'
                             ]
                     ],
