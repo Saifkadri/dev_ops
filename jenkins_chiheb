@@ -44,7 +44,8 @@ pipeline{
                     nexusArtifactUploader artifacts: [
                             [
                             artifactId: 'achat',
-                            classifier: '', file: 'target/achat-1.0.war',
+                            classifier: '', 
+			    file: 'target/achat.war',
                             type: 'war'
                             ]
                     ],
