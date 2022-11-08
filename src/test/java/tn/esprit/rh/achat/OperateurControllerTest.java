@@ -48,8 +48,8 @@ class OperateurControllerTest {
         List<Operateur> LOperateur = new ArrayList<>();
         for (Long i=1L;i<=10L;i++) {
             operateur.setIdOperateur(i);
-            operateur.setPrenom("mohamed");
-            operateur.setNom("abdelli");
+            operateur.setPrenom("chiheb");
+            operateur.setNom("najei");
             operateur.setPassword("devops");
             Operateur op=operateurRepository.save(operateur);
             LOperateur.add(op);
