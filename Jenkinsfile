@@ -22,11 +22,6 @@ pipeline {
       		          }
             	}
 		  
-		  stage("NEXUS") {
-        	    steps {
-		        sh 'mvn clean deploy -DskipTests'
-                      }
-                }
 
 		  
 		   /* stage('Testing maven') {
@@ -44,5 +39,11 @@ pipeline {
 	                  }
 	                }
 	            }
+		  
+		    stage("NEXUS") {
+        	    steps {
+		        sh 'mvn clean deploy -DskipTests'
+                      }
+                }
 }
 }
