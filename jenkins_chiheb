@@ -58,6 +58,30 @@ pipeline{
                         version: 'pom.1.0'
                 }
             }
+	     stage('Build docker image'){
+                             steps{
+                                 script{
+                                    sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/springprojet .'
+                                 }
+                             }
+                         }
+	     stage('Docker login') {
+
+                                         steps {
+                                          sh 'echo "login Docker ...."'
+                   	sh 'docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'
+                               }  }
+		 stage('Docker push') {
+
+                 steps {
+                      sh 'echo "Docker is pushing ...."'
+                     	sh 'docker push $DOCKERHUB_CREDENTIALS_USR/springprojet'
+                        }  }
+         stage('Docker compose') {
+
+                          steps {
+                               sh 'docker-compose up -d'
+                                 }  }
         }
 }
 
