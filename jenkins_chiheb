@@ -45,8 +45,8 @@ pipeline{
                             [
                             artifactId: 'achat',
                             classifier: '', 
-			    file: 'achat-1.0.war',
-                            type: 'war'
+			    file: 'pom.xml',
+                            type: 'pom'
                             ]
                     ],
                      credentialsId: 'nexus3',
@@ -55,7 +55,7 @@ pipeline{
                         nexusVersion: 'nexus3',
                         protocol: 'http',
                         repository: 'simpleapp-release',
-                        version: '1.0'
+                        version: 'pom.1.0'
                 }
             }
         }
