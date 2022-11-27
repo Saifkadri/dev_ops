@@ -18,8 +18,8 @@ pipeline {
             steps {
 
                 echo 'Pulling...';
-                git branch: 'boulbaba',
-                url : 'https://github.com/boulbababenjabeur/DevopsProject.git';
+                git branch: 'MaariemAzaiez',
+                url : 'https://github.com/Saifkadri/dev_ops.git';
             }
         }
 	    
